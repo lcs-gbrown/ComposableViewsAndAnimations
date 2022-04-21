@@ -20,6 +20,8 @@ struct ExerciseOneView: View {
 
     @State var scaleFactor: CGFloat = 1.0
     
+    @State private var hue: Color = .red
+    
     // MARK: Computed properties
 
     var body: some View {
@@ -30,10 +32,16 @@ struct ExerciseOneView: View {
 
                 Circle()
                     .scaleEffect(scaleFactor)
+                    .foregroundColor(hue)
                     .animation(.default)
                     .onTapGesture {
                         scaleFactor -= 0.1
+                        
+                        hue = Color(hue: Double.random(in: 1...360) / 360.0,
+                                    saturation: 0.8,
+                                    brightness: 0.8)
                        
+                        
                     }
                 
             }
