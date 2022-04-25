@@ -35,7 +35,11 @@ struct ExerciseFourView: View {
                 Circle()
                     .scaleEffect(2.0)
                     .foregroundColor(hue)
-                    .animation(.default)
+                    .animation(
+                    Animation
+                        .easeInOut(duration: 2.0)
+                        .repeatForever(autoreverses: true)
+                    )
                     .onTapGesture {
                         //Change the scale factor
                         scaleFactor = 2.0
@@ -70,8 +74,8 @@ struct ExerciseFourView: View {
     
 }
 
-struct ExerciseOneView_Previews: PreviewProvider {
+struct ExerciseFourView_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseOneView(showThisView: .constant(true))
+        ExerciseFourView(showThisView: .constant(true))
     }
 }
