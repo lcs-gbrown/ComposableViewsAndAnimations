@@ -36,7 +36,7 @@ struct CustomComposableDescriptionView: View {
             .padding(.bottom)
             
             List {
-                NavigationLink(destination: CustomComposableView()) {
+                NavigationLink(destination: CustomComposableView(message: "here")) {
                     SimpleListItemView(title: "My Composable View",
                                        caption: "A brief description of my view")
                 }
