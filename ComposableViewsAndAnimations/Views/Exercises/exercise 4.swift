@@ -21,7 +21,6 @@ struct ExerciseFourView: View {
     //Control the scale foctor
     @State private var scaleFactor: CGFloat = 1.0
 
-    @State var scaleFactor: CGFloat = 1.0
     
     @State private var hue: Color = .red
     
@@ -38,7 +37,8 @@ struct ExerciseFourView: View {
                     .foregroundColor(hue)
                     .animation(.default)
                     .onTapGesture {
-                        scaleFactor -= 0.1
+                        //Change the scale factor
+                        scaleFactor = 2.0
                         
                         hue = Color(hue: Double.random(in: 1...360) / 360.0,
                                     saturation: 0.8,
