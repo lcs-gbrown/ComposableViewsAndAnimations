@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A1C4DD128171AAB004FB0B1 /* ExerciseFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1C4DD028171AAB004FB0B1 /* ExerciseFour.swift */; };
+		0A1C4DD328172480004FB0B1 /* CustomComposableViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1C4DD228172480004FB0B1 /* CustomComposableViewTwo.swift */; };
 		0E84E4E825E547660052BC69 /* IAExampleOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84E4E725E547650052BC69 /* IAExampleOneView.swift */; };
 		0E84E4F025E591F90052BC69 /* FontsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84E4EF25E591F90052BC69 /* FontsView.swift */; };
 		0E84E4F625E598470052BC69 /* TimingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84E4F525E598470052BC69 /* TimingView.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		0A1C4DD028171AAB004FB0B1 /* ExerciseFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseFour.swift; sourceTree = "<group>"; };
+		0A1C4DD228172480004FB0B1 /* CustomComposableViewTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComposableViewTwo.swift; sourceTree = "<group>"; };
 		0E84E4E725E547650052BC69 /* IAExampleOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAExampleOneView.swift; sourceTree = "<group>"; };
 		0E84E4EF25E591F90052BC69 /* FontsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsView.swift; sourceTree = "<group>"; };
 		0E84E4F525E598470052BC69 /* TimingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				81331FB625E736AA00CFDB02 /* CustomComposableDescriptionView.swift */,
 				81331FBA25E736B600CFDB02 /* CustomComposableView.swift */,
+				0A1C4DD228172480004FB0B1 /* CustomComposableViewTwo.swift */,
 			);
 			path = Assignment;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				0E8E8AF425E5434100012516 /* ContentView.swift in Sources */,
 				81331FBB25E736B600CFDB02 /* CustomComposableView.swift in Sources */,
 				0A1C4DD128171AAB004FB0B1 /* ExerciseFour.swift in Sources */,
+				0A1C4DD328172480004FB0B1 /* CustomComposableViewTwo.swift in Sources */,
 				0E84E4E825E547660052BC69 /* IAExampleOneView.swift in Sources */,
 				0E84E4F625E598470052BC69 /* TimingView.swift in Sources */,
 				81D2F47C25E5856E00ACF089 /* ExerciseThreeView.swift in Sources */,

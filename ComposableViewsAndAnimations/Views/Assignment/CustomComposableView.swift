@@ -15,6 +15,9 @@ struct CustomComposableView: View {
     //Control the horizontal offset
     @State private var offset = 0.0
     
+    //Control the rotation angle
+    @State var currentRotationAngle = Angle.degrees(0)
+    
     //MARK: Computed properties
     var body: some View {
         ZStack {
@@ -25,6 +28,7 @@ struct CustomComposableView: View {
             Text("Ok")
                 .foregroundColor(.white)
         }
+        .rotationEffect(currentRotationAngle, anchor: .center)
         .offset(x: offset, y: 0)
         .animation(
             Animation.easeInOut(duration: 2.0)
@@ -32,6 +36,9 @@ struct CustomComposableView: View {
         .onTapGesture {
             //Move the circle to the right
             offset = 100.0
+            
+        // rotate a full revolution
+            currentRotationAngle = .degrees(360)
         }
     }
     

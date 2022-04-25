@@ -10,7 +10,21 @@ import SwiftUI
 struct CustomComposableDescriptionView: View {
     
     // MARK: Stored properties
+    
+    // What to say
     @State private var phrase: String = ""
+    
+    // What typeface to show phrase in
+    @State private var selectedFont: String = ""
+    
+    // Creates an array of all fonts
+    private static let fontNames: [String] = {
+        var names = [String]()
+        for familyName in UIFont.familyNames {
+            names.append(contentsOf: UIFont.fontNames(forFamilyName: familyName))
+        }
+        return names.sorted()
+    }()
     
     // MARK: Computed properties
     var body: some View {
@@ -30,13 +44,28 @@ struct CustomComposableDescriptionView: View {
                     If the view accepts a parameter, provide a control to enter the input below.
                     """)
                 
-                TextField("Enter an input value", text: $phrase)
+                TextField("enter a message here", text: $phrase)
+                
+                // Example usage #2 - Wheel
+                Picker(selection: $selectedFont,
+                       label: Text("Picker Name"),
+                       content: {
+                    
+                    ForEach(CustomComposableDescriptionView.fontNames, id: \.self) { currentFont in
+                        Text(currentFont)
+                            .font(Font.custom(currentFont, size: 17))
+                    }
+
+                })
+                .pickerStyle(WheelPickerStyle())
+                .border(Color.black)
+                .padding(.bottom, 5)
                 
             }
             .padding(.bottom)
             
             List {
-                NavigationLink(destination: CustomComposableView(message: "here")) {
+                NavigationLink(destination: CustomComposableViewTwo(message: phrase, font: selectedFont)) {
                     SimpleListItemView(title: "My Composable View",
                                        caption: "A brief description of my view")
                 }
