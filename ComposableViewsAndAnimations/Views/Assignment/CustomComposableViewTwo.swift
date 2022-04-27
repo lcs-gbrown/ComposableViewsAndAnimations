@@ -24,11 +24,12 @@ struct CustomComposableViewTwo: View {
     //       initiated state changes by, for example, clicking on the red circle.
     //
     // In half a second, make the timer fire, so the four properties above get their state changed.
-    let timer = Timer.publish(every: 0.25, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     var body: some View {
         
         Text("\(message)")
             .font(Font.custom(font, size: 50))
+            .offset(x: 0, y: -300)
             .animation(
                 Animation.easeInOut(duration: desiredDuration)
             )
