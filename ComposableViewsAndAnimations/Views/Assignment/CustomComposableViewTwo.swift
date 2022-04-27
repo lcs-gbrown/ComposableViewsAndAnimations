@@ -14,6 +14,8 @@ struct CustomComposableViewTwo: View {
     
     let font: String
     
+    let desiredDuration: Double
+    
     @State private var scaleFactor: CGFloat = 1.0
     
     
@@ -26,9 +28,9 @@ struct CustomComposableViewTwo: View {
     var body: some View {
         
         Text("\(message)")
-            .font(Font.custom(font, size: 17))
+            .font(Font.custom(font, size: 50))
             .animation(
-                Animation.easeInOut(duration: 2.0)
+                Animation.easeInOut(duration: desiredDuration)
             )
             .onReceive(timer) { input in
                 // Stop the timer from continuing to fire
@@ -41,6 +43,6 @@ struct CustomComposableViewTwo: View {
 
 struct CustomComposableViewTwo_Previews: PreviewProvider {
     static var previews: some View {
-        CustomComposableViewTwo(message: "Sad", font: "ArialHebrew")
+        CustomComposableViewTwo(message: "Sad", font: "ArialHebrew", desiredDuration: 2.0)
     }
 }

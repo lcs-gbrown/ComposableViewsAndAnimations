@@ -12,6 +12,8 @@ struct CustomComposableView: View {
     
     //MARK: Stored properties
     
+    let desiredDuration: Double
+    
     //Control the horizontal offset
     @State private var offset = 0.0
     
@@ -46,6 +48,6 @@ struct CustomComposableView: View {
 
 struct CustomComposableView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomComposableView()
+        CustomComposableView(desiredDuration: 2.0)
     }
 }

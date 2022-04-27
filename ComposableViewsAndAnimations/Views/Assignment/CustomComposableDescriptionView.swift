@@ -17,6 +17,8 @@ struct CustomComposableDescriptionView: View {
     // What typeface to show phrase in
     @State private var selectedFont: String = ""
     
+    @State private var duration: Double = 2.0
+    
     // Creates an array of all fonts
     private static let fontNames: [String] = {
         var names = [String]()
@@ -39,9 +41,9 @@ struct CustomComposableDescriptionView: View {
                     .padding(.top)
                 
                 Text("""
-                    Replace this with a description of how to use this view.
-
-                    If the view accepts a parameter, provide a control to enter the input below.
+                    A picker for fonts
+                    
+                    Passes in the chosen flnt and uses it in an ease in and out animation
                     """)
                 
                 TextField("enter a message here", text: $phrase)
@@ -55,19 +57,26 @@ struct CustomComposableDescriptionView: View {
                         Text(currentFont)
                             .font(Font.custom(currentFont, size: 17))
                     }
-
+                    
                 })
-                .pickerStyle(WheelPickerStyle())
-                .border(Color.black)
-                .padding(.bottom, 5)
+                    .pickerStyle(WheelPickerStyle())
+                    .border(Color.black)
+                    .padding(.bottom, 5)
                 
-            }
-            .padding(.bottom)
-            
-            List {
-                NavigationLink(destination: CustomComposableViewTwo(message: phrase, font: selectedFont)) {
-                    SimpleListItemView(title: "My Composable View",
-                                       caption: "A brief description of my view")
+                Slider(value: $duration, in: 0.2...5, step: 0.1) {
+                    Text("Completion amount")
+                    
+                }
+                .padding(.bottom)
+                
+            Text("Duration of animation will be \(duration)")
+                
+                List {
+                    NavigationLink(destination: CustomComposableViewTwo(message: phrase, font: selectedFont, desiredDuration: duration)) {
+                        SimpleListItemView(title: "My Composable View",
+                                           caption: "A brief description of my view")
+                        
+                    }
                 }
             }
             
@@ -85,3 +94,4 @@ struct CustomComposableDescriptionView_Previews: PreviewProvider {
         }
     }
 }
+
