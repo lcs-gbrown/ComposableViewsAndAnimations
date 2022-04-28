@@ -18,6 +18,10 @@ struct CustomComposableViewTwo: View {
     
     @State private var scaleFactor: CGFloat = 1.0
     
+    //1. Starting position for the star (initial state)
+    @State var yOffset = -250.0
+    
+    
     
     // NOTE: Here, we use a timer to initiate the state changes.
     //       In the implicit animation examples given earlier, the USER
@@ -29,11 +33,14 @@ struct CustomComposableViewTwo: View {
         
         Text("\(message)")
             .font(Font.custom(font, size: 50))
-            .offset(x: 0, y: -300)
+            .offset(x: 0, y: yOffset)
             .animation(
                 Animation.easeInOut(duration: desiredDuration)
             )
             .onReceive(timer) { input in
+                
+                yOffset = 100
+                
                 // Stop the timer from continuing to fire
                         timer.upstream.connect().cancel() }
         
