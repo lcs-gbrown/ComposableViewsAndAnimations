@@ -16,33 +16,44 @@ struct CustomComposableViewTwo: View {
     
     let desiredDuration: Double
     
+//    let startingOffset: Double
+    
+    let endingOffset: Double
+    
     @State private var scaleFactor: CGFloat = 1.0
     
-    //1. Starting position for the star (initial state)
-    @State var yOffset = -250.0
-    
-    
+    //1. Starting position for the text (initial state)
+    @State var yOffset: Double = -200
     
     // NOTE: Here, we use a timer to initiate the state changes.
     //       In the implicit animation examples given earlier, the USER
     //       initiated state changes by, for example, clicking on the red circle.
     //
     // In half a second, make the timer fire, so the four properties above get their state changed.
-    let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     var body: some View {
         
+
+        let _ = print("ending Offset is: \(endingOffset)")
+        let _ = print("y Offset is: \(yOffset)")
+
         Text("\(message)")
             .font(Font.custom(font, size: 50))
-            .offset(x: 0, y: yOffset)
+            .offset(x: 0, y: CGFloat(yOffset))
             .animation(
                 Animation.easeInOut(duration: desiredDuration)
             )
             .onReceive(timer) { input in
                 
-                yOffset = 100
+                yOffset = endingOffset
                 
                 // Stop the timer from continuing to fire
-                        timer.upstream.connect().cancel() }
+                        timer.upstream.connect().cancel()
+                
+            }
+//            .task {
+//                yOffset = startingOffset
+//            }
         
         
     }
@@ -51,6 +62,6 @@ struct CustomComposableViewTwo: View {
 
 struct CustomComposableViewTwo_Previews: PreviewProvider {
     static var previews: some View {
-        CustomComposableViewTwo(message: "Sad", font: "ArialHebrew", desiredDuration: 2.0)
+        CustomComposableViewTwo(message: "Sad", font: "ArialHebrew", desiredDuration: 2.0, endingOffset: 100)
     }
 }

@@ -19,6 +19,10 @@ struct CustomComposableDescriptionView: View {
     
     @State private var duration: Double = 2.0
     
+//    @State private var selectedOffsetA: Double = 100
+    
+    @State private var selectedOffsetB: Double = 100
+    
     // Creates an array of all fonts
     private static let fontNames: [String] = {
         var names = [String]()
@@ -46,9 +50,13 @@ struct CustomComposableDescriptionView: View {
                     Passes in the chosen flnt and uses it in an ease in and out animation
                     """)
                 
+            }
+            
+            Group {
+                
                 TextField("enter a message here", text: $phrase)
                 
-                // Example usage #2 - Wheel
+                
                 Picker(selection: $selectedFont,
                        label: Text("Picker Name"),
                        content: {
@@ -67,25 +75,46 @@ struct CustomComposableDescriptionView: View {
                     Text("Completion amount")
                     
                 }
+//                Slider(value: $selectedOffsetA, in: -100...100, step: 1) {
+//                    Text("starting position")
+//
+//                }
+                Slider(value: $selectedOffsetB, in: -100...100, step: 1) {
+                    Text("end position")
+                    
+                }
                 .padding(.bottom)
                 
-            Text("Duration of animation will be \(duration)")
+            }
+            
+            Group {
                 
-                List {
-                    NavigationLink(destination: CustomComposableViewTwo(message: phrase, font: selectedFont, desiredDuration: duration)) {
-                        SimpleListItemView(title: "My Composable View",
-                                           caption: "A brief description of my view")
-                        
-                    }
+                
+                Text("Duration of animation will be \(duration)")
+                
+//                Text("Starting offset will be \(selectedOffsetA)")
+                
+                Text("Ending offset will be \(selectedOffsetB) ")
+                
+            }
+            
+            List {
+                NavigationLink(destination: CustomComposableViewTwo(message: phrase, font: selectedFont, desiredDuration: duration,  endingOffset: selectedOffsetB)) {
+                    SimpleListItemView(title: "My Composable View",
+                                       caption: "A brief description of my view")
+                    
                 }
             }
             
+            
+            
+
         }
         .padding()
         .navigationTitle("My Composable View")
-        
     }
 }
+
 
 struct CustomComposableDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
