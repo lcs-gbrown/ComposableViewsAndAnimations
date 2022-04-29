@@ -16,6 +16,8 @@ struct CustomComposableViewTwo: View {
     
     let desiredDuration: Double
     
+    let desiredSize: Double
+    
 //    let startingOffset: Double
     
     let endingOffset: Double
@@ -38,7 +40,7 @@ struct CustomComposableViewTwo: View {
         let _ = print("y Offset is: \(yOffset)")
 
         Text("\(message)")
-            .font(Font.custom(font, size: 50))
+            .font(Font.custom(font, size: desiredSize))
             .offset(x: 0, y: CGFloat(yOffset))
             .animation(
                 Animation.easeInOut(duration: desiredDuration)
@@ -51,9 +53,7 @@ struct CustomComposableViewTwo: View {
                         timer.upstream.connect().cancel()
                 
             }
-//            .task {
-//                yOffset = startingOffset
-//            }
+
         
         
     }
@@ -62,6 +62,6 @@ struct CustomComposableViewTwo: View {
 
 struct CustomComposableViewTwo_Previews: PreviewProvider {
     static var previews: some View {
-        CustomComposableViewTwo(message: "Sad", font: "ArialHebrew", desiredDuration: 2.0, endingOffset: 100)
+        CustomComposableViewTwo(message: "Sad", font: "ArialHebrew", desiredDuration: 2.0, desiredSize: 50, endingOffset: 100 )
     }
 }

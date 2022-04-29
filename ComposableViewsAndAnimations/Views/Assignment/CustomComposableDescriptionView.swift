@@ -19,7 +19,9 @@ struct CustomComposableDescriptionView: View {
     
     @State private var duration: Double = 2.0
     
-//    @State private var selectedOffsetA: Double = 100
+    @State private var textSize: Double = 50
+    
+    //    @State private var selectedOffsetA: Double = 100
     
     @State private var selectedOffsetB: Double = 100
     
@@ -75,15 +77,19 @@ struct CustomComposableDescriptionView: View {
                     Text("Completion amount")
                     
                 }
-//                Slider(value: $selectedOffsetA, in: -100...100, step: 1) {
-//                    Text("starting position")
-//
-//                }
+                
                 Slider(value: $selectedOffsetB, in: -100...100, step: 1) {
                     Text("end position")
                     
                 }
+                
+                Slider(value: $textSize, in: 0...100, step: 1) {
+                    Text("text size")
+                    
+                }
                 .padding(.bottom)
+                
+                
                 
             }
             
@@ -92,14 +98,17 @@ struct CustomComposableDescriptionView: View {
                 
                 Text("Duration of animation will be \(duration)")
                 
-//                Text("Starting offset will be \(selectedOffsetA)")
+            
                 
                 Text("Ending offset will be \(selectedOffsetB) ")
+                
+                
+                Text("Size of text will be \(textSize)")
                 
             }
             
             List {
-                NavigationLink(destination: CustomComposableViewTwo(message: phrase, font: selectedFont, desiredDuration: duration,  endingOffset: selectedOffsetB)) {
+                NavigationLink(destination: CustomComposableViewTwo(message: phrase, font: selectedFont, desiredDuration: duration, desiredSize: textSize,  endingOffset: selectedOffsetB)) {
                     SimpleListItemView(title: "My Composable View",
                                        caption: "A brief description of my view")
                     
@@ -108,7 +117,7 @@ struct CustomComposableDescriptionView: View {
             
             
             
-
+            
         }
         .padding()
         .navigationTitle("My Composable View")
