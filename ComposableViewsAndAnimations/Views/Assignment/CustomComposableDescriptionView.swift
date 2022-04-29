@@ -47,7 +47,7 @@ struct CustomComposableDescriptionView: View {
                 Text("""
                     A picker for fonts
                     
-                    Passes in the chosen flnt and uses it in an ease in and out animation
+                    Passes in the chosen font and uses it in an ease in and out animation. Text can move from top to bottom (or vice versa) based on the slider values. Animation can be used for delivering simple messages at the end of a level in a game.
                     """)
                 
             }
@@ -67,7 +67,7 @@ struct CustomComposableDescriptionView: View {
                     }
                     
                 })
-                    .pickerStyle(WheelPickerStyle())
+                    .pickerStyle(MenuPickerStyle())
                     .border(Color.black)
                     .padding(.bottom, 5)
                 
